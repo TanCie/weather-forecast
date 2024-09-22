@@ -22,7 +22,7 @@ setInterval(() => {
     const minutes = time.getMinutes();
     const ampm = hour >= 12 ? 'PM' : 'AM';
 
-    timeEl.innerHTML = (hourIn12Hr < 10 ? '0'+hourIn12Hr : hourIn12Hr) + ':' + (minutes < 10 ? '0'+minutes : minutes) + ' ' + `<span id="am-pm">${ampm}</span>`;
+    timeEl.innerHTML = (hourIn12Hr < 10 ? '0' + hourIn12Hr : hourIn12Hr) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + `<span id="am-pm">${ampm}</span>`;
 
     dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 
@@ -35,7 +35,7 @@ function getWeatherData() {
         console.log(success);
 
         let { latitude, longitude } = success.coords;
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=7`).then(res => res.json()).then(data => {
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=7`).then(res => res.json()).then(data => {
             console.log(data);
             showWeatherData(data);
         })
@@ -87,7 +87,7 @@ function showWeatherData(data) {
                     <div class="temp">Day - ${maxtemp_c}&#176;C</div>
                 </div>
             `
-            
+
         } else {
 
             otherDayForecast += `
