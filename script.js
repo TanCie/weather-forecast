@@ -22,7 +22,7 @@ setInterval(() => {
     const minutes = time.getMinutes();
     const ampm = hour >= 12 ? 'PM' : 'AM';
 
-    timeEl.innerHTML = (hourIn12Hr < 10 ? '0'+hourIn12Hr : hourIn12Hr) + ':' + (minutes < 10 ? '0'+minutes : minutes) + ' ' + `${ampm}`;
+    timeEl.innerHTML = (hourIn12Hr < 10 ? '0'+hourIn12Hr : hourIn12Hr) + ':' + (minutes < 10 ? '0'+minutes : minutes) + ' ' + `<span id="am-pm">${ampm}</span>`;
 
     dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 
@@ -46,7 +46,7 @@ function showWeatherData(data) {
     let { humidity, pressure_in, wind_kph } = data.current;
     const { sunrise, sunset } = data.forecast.forecastday[0].astro;
 
-    timezone.innerHTML = data.location.tz_id;
+    //timezone.innerHTML = data.location.tz_id;
     countryEl.innerHTML = data.location.lat + 'N ' + data.location.lon + 'E';
 
     currentWeatherItemsEl.innerHTML =
